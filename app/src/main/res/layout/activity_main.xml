@@ -40,4 +40,9 @@
         android:id="@+id/login_layout"
         android:visibility="gone"/>
 
+    <include
+        layout="@layout/profile"
+        android:id="@+id/profile_layout"
+        android:visibility="gone"/>
+
 </RelativeLayout>

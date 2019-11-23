@@ -10,4 +10,5 @@
     <string name="username_duplicate">Given username is already in use</string>
     <string name="login_error">Invalid username or password</string>
     <string name="login_success">Successful login</string>
+    <string name="steps">Steps:</string>
 </resources>
