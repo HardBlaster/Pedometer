@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/counterFragment"
+        android:icon="@drawable/ic_counter"
+        android:title="@string/counter"/>
+
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/ic_history"
+        android:title="@string/history"/>
+
+    <item
+        android:id="@+id/JSONFragment"
+        android:icon="@drawable/ic_json"
+        android:title="@string/json"/>
+
+
+</menu>

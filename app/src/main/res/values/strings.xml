@@ -1,14 +1,8 @@
 <resources>
     <string name="app_name">Pedometer</string>
-    <string name="register">Register</string>
+    <string name="registration">Registration</string>
     <string name="login">Login</string>
-    <string name="username">Username</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="reg_success">Successful registration</string>
-    <string name="email_duplicate">Given email is already in use</string>
-    <string name="username_duplicate">Given username is already in use</string>
-    <string name="login_error">Invalid username or password</string>
-    <string name="login_success">Successful login</string>
-    <string name="steps">Steps:</string>
+    <string name="counter">Counter</string>
+    <string name="history">History</string>
+    <string name="json">JSON</string>
 </resources>

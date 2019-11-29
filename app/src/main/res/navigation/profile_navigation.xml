@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_navigation.xml"
+    app:startDestination="@id/todayFragment">
+
+    <fragment
+        android:id="@+id/todayFragment"
+        android:name="hu.unideb.pedometer.ui.profile.today.Today"
+        android:label="today_fragment"
+        tools:layout="@layout/today_fragment" />
+    <fragment
+        android:id="@+id/JSONFragment"
+        android:name="hu.unideb.pedometer.ui.profile.json.Json"
+        android:label="json_fragment"
+        tools:layout="@layout/json_fragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="hu.unideb.pedometer.ui.profile.history.History"
+        android:label="history_fragment"
+        tools:layout="@layout/history_fragment" />
+</navigation>
