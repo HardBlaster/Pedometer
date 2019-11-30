@@ -1,5 +1,6 @@
 package hu.unideb.pedometer.ui.Auth.registration
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import hu.unideb.pedometer.R
+import hu.unideb.pedometer.ui.ProfileActivity
+import kotlinx.android.synthetic.main.registration_fragment.*
 
 class Registration : Fragment() {
 
@@ -30,4 +33,12 @@ class Registration : Fragment() {
         // TODO: Use the ViewModel
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        registrationFragment_registration.setOnClickListener {
+            val intent = Intent(activity, ProfileActivity::class.java)
+            activity?.startActivity(intent)
+        }
+    }
 }

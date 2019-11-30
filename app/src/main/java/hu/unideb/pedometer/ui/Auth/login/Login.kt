@@ -1,17 +1,19 @@
 package hu.unideb.pedometer.ui.Auth.login
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
 import hu.unideb.pedometer.R
-import hu.unideb.pedometer.ui.MainActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import hu.unideb.pedometer.ui.AuthActivity
+import hu.unideb.pedometer.ui.ProfileActivity
 import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.android.synthetic.main.profile_layout.*
+import kotlinx.android.synthetic.main.registration_fragment.*
 
 class Login : Fragment() {
 
@@ -37,15 +39,10 @@ class Login : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        test.setOnClickListener {
-            showgermo()
+        loginFragment_login.setOnClickListener {
+            val intent = Intent(activity, ProfileActivity::class.java)
+            activity?.startActivity(intent)
         }
-    }
-
-
-    fun showgermo() {
-
-        profile_layout.visibility = View.VISIBLE
     }
 
 }
