@@ -1,4 +1,4 @@
-package hu.unideb.pedometer.ui.Auth.registration
+package hu.unideb.pedometer.ui.auth.login
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
@@ -7,38 +7,45 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.databinding.DataBindingUtil
 import hu.unideb.pedometer.R
+import hu.unideb.pedometer.databinding.LoginFragmentBinding
 import hu.unideb.pedometer.ui.ProfileActivity
-import kotlinx.android.synthetic.main.registration_fragment.*
+import hu.unideb.pedometer.ui.auth.UserData
+import kotlinx.android.synthetic.main.login_fragment.*
 
-class Registration : Fragment() {
+class Login : Fragment() {
 
     companion object {
-        fun newInstance() = Registration()
+        fun newInstance() = Login()
     }
 
-    private lateinit var viewModel: RegistrationViewModel
+    private lateinit var viewModel: LoginViewModel
+    private lateinit var binding: LoginFragmentBinding
+    private val userData: UserData = UserData()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.registration_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RegistrationViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        registrationFragment_registration.setOnClickListener {
+        loginFragment_login.setOnClickListener {
             val intent = Intent(activity, ProfileActivity::class.java)
             activity?.startActivity(intent)
         }
     }
+
 }

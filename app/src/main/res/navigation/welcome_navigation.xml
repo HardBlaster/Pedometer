@@ -8,12 +8,12 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="hu.unideb.pedometer.ui.Auth.login.Login"
+        android:name="hu.unideb.pedometer.ui.auth.login.Login"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" />
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="hu.unideb.pedometer.ui.Auth.registration.Registration"
+        android:name="hu.unideb.pedometer.ui.auth.registration.Registration"
         android:label="registration_fragment"
         tools:layout="@layout/registration_fragment" />
 </navigation>

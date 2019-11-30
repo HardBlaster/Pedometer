@@ -1,4 +1,4 @@
-package hu.unideb.pedometer.ui.Auth.login
+package hu.unideb.pedometer.ui.auth.login
 
 import androidx.lifecycle.ViewModel
 

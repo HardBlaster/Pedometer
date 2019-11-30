@@ -26,9 +26,6 @@ class AuthActivity : AppCompatActivity(){
         welcome_bottom_nav.setupWithNavController(welcomeNavController)
         NavigationUI.setupActionBarWithNavController(this, welcomeNavController)
 
-        
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
