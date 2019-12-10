@@ -6,9 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "history")
 data class History(
+    @PrimaryKey(autoGenerate = true)
+    val historyID: Int,
     val userID: Int,
     @Embedded(prefix = "date_")
-    @PrimaryKey
     val date: SimpleDate,
     val steps: Int
 )

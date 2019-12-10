@@ -14,6 +14,6 @@ interface HistoryDAO {
     fun upsert(history: History)
 
     @Query("select * from history where userID = :ID")
-    fun getHistory(ID: Int) : LiveData<History>
+    fun getHistory(ID: Int) : LiveData<List<History>>
 
 }
