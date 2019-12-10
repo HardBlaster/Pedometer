@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.annotations.JsonAdapter
 
 import hu.unideb.pedometer.R
@@ -37,18 +38,11 @@ class Json : Fragment() {
 
         val jsons = viewModel.getJson()
 
-        Log.d("JSON", "elvileg itt is megvan")
+        val rView = activity?.findViewById(R.id.json_recycle) as RecyclerView
+        rView.layoutManager = LinearLayoutManager(this.context, LinearLayout.VERTICAL, false)
 
-        json_recycle.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = hu.unideb.pedometer.data.JsonAdapter(jsons)
+        val adapter = hu.unideb.pedometer.data.JsonAdapter(jsons)
+        rView.adapter = adapter
         }
-
-        Log.d("JSON", "Elvileg ki is dobta")
-        }
-
-    fun showError(msg: String) {
-        Toast.makeText(activity, msg, Toast.LENGTH_SHORT)
-    }
 
 }
