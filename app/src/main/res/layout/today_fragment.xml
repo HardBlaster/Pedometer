@@ -25,5 +25,11 @@
         android:layout_height="match_parent"
         android:text="@={today.password}" />
 
+    <Button
+        android:id="@+id/go_json"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
 </FrameLayout>
 </layout>

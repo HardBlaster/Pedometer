@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 
 import hu.unideb.pedometer.R
 import hu.unideb.pedometer.databinding.TodayFragmentBinding
@@ -27,7 +28,9 @@ class Today : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.today_fragment, container, false)
-
+        binding.goJson.setOnClickListener {
+            goToJson()
+        }
         return binding.root
     }
 
@@ -35,5 +38,10 @@ class Today : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(TodayViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    fun goToJson(){
+        val action=TodayDirections.actionTodayFragmentToJSONFragment()
+        view!!.findNavController().navigate(action)
     }
 }

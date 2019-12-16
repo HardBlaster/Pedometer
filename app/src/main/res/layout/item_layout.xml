@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="jsonObject"
+            type="hu.unideb.pedometer.data.JsonObject" />
+        <variable
+            name="clickListener"
+            type="hu.unideb.pedometer.data.JsonListener" />
+    </data>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:onClick="@{()->clickListener.onClick(jsonObject)}">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -20,21 +30,22 @@
                 android:id="@+id/item_userId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""/>
+                app:jsonUserId="@{jsonObject}"/>
 
             <TextView
                 android:id="@+id/item_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""/>
+                app:jsonId="@{jsonObject}"/>
 
             <TextView
                 android:id="@+id/item_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""/>
+                app:jsonTitle="@{jsonObject}"/>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 </LinearLayout>
+</layout>
