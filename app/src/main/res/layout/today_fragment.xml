@@ -7,7 +7,7 @@
     <data>
         <variable
             name="today"
-            type="hu.unideb.pedometer.ui.auth.UserData" />
+            type="hu.unideb.pedometer.data.UserData" />
     </data>
 
 <FrameLayout

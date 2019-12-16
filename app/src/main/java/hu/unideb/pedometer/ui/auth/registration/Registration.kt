@@ -12,7 +12,7 @@ import androidx.databinding.DataBindingUtil
 import hu.unideb.pedometer.R
 import hu.unideb.pedometer.databinding.RegistrationFragmentBinding
 import hu.unideb.pedometer.ui.ProfileActivity
-import hu.unideb.pedometer.ui.auth.UserData
+import hu.unideb.pedometer.data.UserData
 import kotlinx.android.synthetic.main.registration_fragment.*
 
 class Registration : Fragment() {
@@ -23,13 +23,15 @@ class Registration : Fragment() {
 
     private lateinit var viewModel: RegistrationViewModel
     private lateinit var binding: RegistrationFragmentBinding
-    private val userData: UserData = UserData()
+    private val userData: UserData =
+        UserData()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.registration_fragment, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.registration_fragment, container, false)
 
         return binding.root
     }

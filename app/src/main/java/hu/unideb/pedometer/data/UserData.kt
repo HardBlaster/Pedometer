@@ -1,4 +1,4 @@
-package hu.unideb.pedometer.ui.auth
+package hu.unideb.pedometer.data
 
 data class UserData(
     var ID: Int = 0,

@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import hu.unideb.pedometer.R
 import hu.unideb.pedometer.databinding.LoginFragmentBinding
 import hu.unideb.pedometer.ui.ProfileActivity
-import hu.unideb.pedometer.ui.auth.UserData
+import hu.unideb.pedometer.data.UserData
 import kotlinx.android.synthetic.main.login_fragment.*
 
 class Login : Fragment() {
@@ -22,7 +22,8 @@ class Login : Fragment() {
 
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: LoginFragmentBinding
-    private val userData: UserData = UserData()
+    private val userData: UserData =
+        UserData()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

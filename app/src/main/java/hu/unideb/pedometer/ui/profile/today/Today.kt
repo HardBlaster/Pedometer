@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 
 import hu.unideb.pedometer.R
 import hu.unideb.pedometer.databinding.TodayFragmentBinding
-import hu.unideb.pedometer.ui.auth.UserData
+import hu.unideb.pedometer.data.UserData
 
 class Today : Fragment() {
 
