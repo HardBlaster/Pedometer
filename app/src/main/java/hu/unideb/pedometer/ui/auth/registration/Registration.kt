@@ -13,6 +13,7 @@ import hu.unideb.pedometer.R
 import hu.unideb.pedometer.databinding.RegistrationFragmentBinding
 import hu.unideb.pedometer.ui.ProfileActivity
 import hu.unideb.pedometer.data.UserData
+import hu.unideb.pedometer.database.PMDatabase
 import kotlinx.android.synthetic.main.registration_fragment.*
 
 class Registration : Fragment() {
@@ -32,6 +33,12 @@ class Registration : Fragment() {
     ): View? {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.registration_fragment, container, false)
+
+        val application = requireNotNull(this.activity).application
+        val dataSource = PMDatabase.invoke(application).userDAO()
+        val viewModelFactory = RegistrationViewModellFactory(dataSource, application)
+        viewModel = ViewModelProviders.of(this,viewModelFactory).get(RegistrationViewModel::class.java)
+
 
         return binding.root
     }
