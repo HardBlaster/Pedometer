@@ -9,4 +9,16 @@ data class User(
     var ID: Int = 0,
     var username: String = "",
     var password: String = "",
-    var email: String = "")
+    var email: String = "") {
+
+    override fun equals(other: Any?): Boolean{
+        if (this === other) return true
+        if (other?.javaClass != javaClass) return false
+
+        other as User
+
+        if (this.username != other.username) return false
+
+        return true
+    }
+}

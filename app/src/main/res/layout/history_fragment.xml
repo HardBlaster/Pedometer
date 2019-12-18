@@ -8,6 +8,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="history" />
+        android:text="@string/history_text"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/history_step_number"
+        android:gravity="center_horizontal"
+        android:text="0"
+        android:textSize="30sp"
+        android:padding="35sp"/>
 
 </FrameLayout>

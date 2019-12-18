@@ -1,7 +1,9 @@
 package hu.unideb.pedometer.ui.profile.today
 
 import androidx.lifecycle.ViewModel
+import hu.unideb.pedometer.database.HistoryDAO
 
-class TodayViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class TodayViewModel(val database: HistoryDAO) : ViewModel() {
+
+
 }

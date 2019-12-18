@@ -9,4 +9,5 @@
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="header">Json</string>
+    <string name="history_text">Number of steps in the past:</string>
 </resources>

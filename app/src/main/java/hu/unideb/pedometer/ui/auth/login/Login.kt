@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import hu.unideb.pedometer.R
+import hu.unideb.pedometer.data.User
 import hu.unideb.pedometer.databinding.LoginFragmentBinding
 import hu.unideb.pedometer.ui.ProfileActivity
 import hu.unideb.pedometer.data.UserData
@@ -19,14 +20,14 @@ import kotlinx.android.synthetic.main.login_fragment.*
 
 class Login : Fragment() {
 
+    var user: User = User()
+
     companion object {
         fun newInstance() = Login()
     }
 
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: LoginFragmentBinding
-    private val userData: UserData =
-        UserData()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,12 +38,29 @@ class Login : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = PMDatabase.getInstance(application).userDAO
         val viewModelFactory = LoginViewModellFactory(dataSource)
-        viewModel = ViewModelProviders.of(this,viewModelFactory).get(LoginViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
 
-        viewModel.users.observe(viewLifecycleOwner, Observer {
-            x -> Log.d("TTT", x.toString())
+        viewModel.users.observe(viewLifecycleOwner, Observer { x ->
+            Log.d("TTT", x.toString())
         })
 
+        binding.loginFragmentLogin.setOnClickListener {
+            doLogin()
+        }
+
         return binding.root
+    }
+
+    fun doLogin() {
+        viewModel.updateUserList()
+
+        binding.apply {
+            user.username = loginFragmentUsername.text.toString()
+            user.password = loginFragmentPassword.text.toString()
+
+            val intent = Intent(activity, ProfileActivity::class.java)
+            activity?.startActivity(intent)
+
+        }
     }
 }

@@ -1,6 +1,5 @@
 package hu.unideb.pedometer.ui.auth.registration
 
-import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

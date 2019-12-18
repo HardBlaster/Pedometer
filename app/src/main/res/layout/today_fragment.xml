@@ -4,12 +4,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="today"
-            type="hu.unideb.pedometer.data.UserData" />
-    </data>
-
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,19 +11,18 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text= "@={today.userName}" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@={today.password}" />
+        android:layout_height="wrap_content"
+        android:id="@+id/today_step_count"
+        android:text="0"
+        android:gravity="center"
+        android:textSize="50dp"/>
 
     <Button
         android:id="@+id/go_json"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/json"
+        android:layout_gravity="center"/>
 
 </FrameLayout>
 </layout>
