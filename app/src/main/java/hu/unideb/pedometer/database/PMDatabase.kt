@@ -9,25 +9,36 @@ import hu.unideb.pedometer.data.User
 
 @Database(
     entities = [User::class, History::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class PMDatabase: RoomDatabase() {
 
-    abstract fun historyDAO(): HistoryDAO
-    abstract fun userDAO(): UserDAO
+    abstract val historyDAO: HistoryDAO
+    abstract val userDAO: UserDAO
 
     companion object {
         @Volatile
-        private var instance: PMDatabase? = null
-        private val LOCK = Any()
+        private var INSTANCE: PMDatabase? = null
 
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: buildDatabase(context).also { instance = it}
+        fun getInstance(context: Context): PMDatabase {
+            synchronized(this) {
+                var instance = INSTANCE
+
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        PMDatabase::class.java,
+                        "user_database"
+                    )
+                        .fallbackToDestructiveMigration()
+                        .allowMainThreadQueries()
+                        .build()
+                    INSTANCE = instance
+                }
+                return instance
+            }
         }
 
-        private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-                PMDatabase::class.java,
-                "pedometer.db").build()
     }
 }

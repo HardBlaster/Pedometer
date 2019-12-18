@@ -3,15 +3,18 @@ package hu.unideb.pedometer.ui.auth.login
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import hu.unideb.pedometer.R
 import hu.unideb.pedometer.databinding.LoginFragmentBinding
 import hu.unideb.pedometer.ui.ProfileActivity
 import hu.unideb.pedometer.data.UserData
+import hu.unideb.pedometer.database.PMDatabase
 import kotlinx.android.synthetic.main.login_fragment.*
 
 class Login : Fragment() {
@@ -31,22 +34,15 @@ class Login : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
 
+        val application = requireNotNull(this.activity).application
+        val dataSource = PMDatabase.getInstance(application).userDAO
+        val viewModelFactory = LoginViewModellFactory(dataSource)
+        viewModel = ViewModelProviders.of(this,viewModelFactory).get(LoginViewModel::class.java)
+
+        viewModel.users.observe(viewLifecycleOwner, Observer {
+            x -> Log.d("TTT", x.toString())
+        })
+
         return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        loginFragment_login.setOnClickListener {
-            val intent = Intent(activity, ProfileActivity::class.java)
-            activity?.startActivity(intent)
-        }
-    }
-
 }

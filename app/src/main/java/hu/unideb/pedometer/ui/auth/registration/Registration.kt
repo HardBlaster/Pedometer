@@ -1,22 +1,22 @@
 package hu.unideb.pedometer.ui.auth.registration
 
-import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-
 import hu.unideb.pedometer.R
+import hu.unideb.pedometer.data.User
 import hu.unideb.pedometer.databinding.RegistrationFragmentBinding
-import hu.unideb.pedometer.ui.ProfileActivity
 import hu.unideb.pedometer.data.UserData
 import hu.unideb.pedometer.database.PMDatabase
-import kotlinx.android.synthetic.main.registration_fragment.*
 
 class Registration : Fragment() {
+
+    var newUser = User()
 
     companion object {
         fun newInstance() = Registration()
@@ -24,8 +24,6 @@ class Registration : Fragment() {
 
     private lateinit var viewModel: RegistrationViewModel
     private lateinit var binding: RegistrationFragmentBinding
-    private val userData: UserData =
-        UserData()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,26 +33,26 @@ class Registration : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.registration_fragment, container, false)
 
         val application = requireNotNull(this.activity).application
-        val dataSource = PMDatabase.invoke(application).userDAO()
-        val viewModelFactory = RegistrationViewModellFactory(dataSource, application)
+        val dataSource = PMDatabase.getInstance(application).userDAO
+        val viewModelFactory = RegistrationViewModellFactory(dataSource)
         viewModel = ViewModelProviders.of(this,viewModelFactory).get(RegistrationViewModel::class.java)
 
+        binding.registrationFragmentRegistration.setOnClickListener {
+            doRegistration()
+        }
 
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RegistrationViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    fun doRegistration() {
+        binding.apply {
+            newUser.username = registrationFragmentUsername.text.toString()
+            newUser.password = registrationFragmentPassword.text.toString()
+            newUser.email = registrationFragmentEmail.text.toString()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+            Log.d("TTTT", newUser.toString())
 
-        registrationFragment_registration.setOnClickListener {
-            val intent = Intent(activity, ProfileActivity::class.java)
-            activity?.startActivity(intent)
+            viewModel.registration(newUser)
         }
     }
 }
